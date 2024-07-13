@@ -1,0 +1,227 @@
+/* * =================[ Font Settings ]=========================== */
+
+@font-face {
+    font-family:Rubik;
+    src: url("../webfonts/Rubik/Rubik-Light.ttf");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family:Rubik;
+    src: url("../webfonts/Rubik/Rubik-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family:Rubik;
+    src: url("../webfonts/Rubik/Rubik-Medium.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family:Rubik;
+    src: url("../webfonts/Rubik/Rubik-Bold.ttf");
+    font-weight: 700;
+}
+
+
+/* * ===================[  Global ]============================== */
+
+:root{
+    --main-bg-color:#000;
+    --bg-dark-text-color:#fff;
+    --bg-white-text-color:#000;
+}
+
+
+/* * ====================[ General Settings ]==================== */
+
+*{
+    word-break: break-all;
+}
+
+body{
+    font-family:Rubik;
+    background-color: var(--main-bg-color);
+}
+
+/* .h1, h1 {
+    font-size: calc(2.375rem + 1.8vw);
+    white-space:normal;
+} */
+
+
+/* * ====================[ SideBar ]==================== */
+
+#sideBar{
+    top: 0;
+    left: -266px;
+    bottom: 0;
+    z-index: 999;
+}
+
+.side-bar-toggler img{
+    width: 50px;
+}
+
+.side-bar-toggler ul li a{
+    color: var(--bg-white-text-color); 
+}
+
+#sideBarTogglerBtn{
+    cursor: pointer;
+}
+
+.side-bar-collapse {
+    background-color: var(--main-bg-color);
+}
+
+.side-bar-collapse .top-section .menu li {
+    position: relative;
+    top: 300px;
+}
+
+.side-bar-collapse .top-section .menu a{
+    text-decoration: none;
+    color: var(--bg-dark-text-color);
+}
+
+.side-bar-collapse .bottom-section {
+    & a,.copy-right{
+        text-decoration: none;
+        color: var(--bg-dark-text-color);
+    }
+
+    & .copy-right{
+        word-break: keep-all;
+        width:250px
+    }
+}
+
+
+/** =======================Main Page====================== */
+
+.main-card{
+    cursor: pointer;
+}
+
+.main-card-layer{
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(249, 246, 246, 0.792);
+    transition: all 0.3s;
+}
+
+.main-card:hover .main-card-layer{
+    top: 0%;
+}
+
+/** ========================================  */
+
+#mealDetailsView{
+    color: var(--bg-dark-text-color);
+}
+
+#detailsCloseBtn{
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover{
+        color:#800b0b;
+    }
+}
+
+.badge-recipes{
+    margin: 5px;  
+    --badge-text-color:#055160;
+    background-color: #cff4fc;
+    border: 1px solid #b6effb;
+}
+
+.badge-tags{
+    margin: 5px;  
+    --badge-text-color:#842029;
+    background-color:#f8d7da;
+    border: 1px solid #f5c2c7;
+}
+
+.badge {
+    --bs-badge-padding-x: 0.65em;
+    --bs-badge-padding-y: 0.35em;
+    --bs-badge-font-size: 0.8em;
+    --bs-badge-font-weight: 400;
+    --bs-badge-border-radius: var(--bs-border-radius);
+    white-space:wrap;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    font-size: var(--bs-badge-font-size);
+    font-weight: var(--bs-badge-font-weight);
+    color: var(--badge-text-color);
+    border-radius: var(--bs-badge-border-radius);
+}
+
+/* *=========================== Loader =========================== */
+
+.loader {
+    color: #fff;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    animation: mulShdSpin 1.3s infinite linear;
+    transform: translateZ(0);
+  }
+  
+  @keyframes mulShdSpin {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 
+      2em -2em 0 0em, 3em 0 0 -1em, 
+      2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
+      3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 
+      2em -2em 0 0, 3em 0 0 0.2em, 
+      2em 2em 0 0, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
+       -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
+       -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
+       -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
+      3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
+      3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+    
