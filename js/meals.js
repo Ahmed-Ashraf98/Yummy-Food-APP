@@ -95,7 +95,6 @@ class Meals{
             this.uiController.toggleDetailsView();
             // 2- Show Loading
             this.uiController.showLoader();
-            // 3- Create instance from GameDetails, to display the game details
             new MealDetails(elementId);
         })
     }

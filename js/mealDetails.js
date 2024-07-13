@@ -1,8 +1,8 @@
-"use strict";
+"use strict"; // Defines that JavaScript code should be executed in "strict mode"
 import APIController from "./api-controller.js";
 import UIController from "./ui-controller.js";
 
- // Defines that JavaScript code should be executed in "strict mode"
+
 
 class MealDetails{
 
@@ -11,7 +11,7 @@ class MealDetails{
         this.uiController = new UIController(); // Create instance from ui, so we can hid / show / display
         this.apiController = new APIController();
         this.getMealDetails(id);
-        this.addCloseBtnEvent(); // Add close action for close icon in the game details screen
+        this.addCloseBtnEvent(); 
     }
 
 
@@ -40,8 +40,6 @@ class MealDetails{
         console.log("Ok")
         this.uiController.toggleDetailsView(false);
         this.uiController.toggleMainView();
-        // this.ui.hideGameDetailsView(); // hide the game details
-        // this.ui.showGamesLisView(); // show the current games list view
    })
     }
 

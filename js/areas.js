@@ -37,7 +37,6 @@ class Areas{
             // 2- Show Loading
             this.uiController.showLoader();
             this.uiController.toggleMainView();
-            // 3- Create instance from GameDetails, to display the game details
             let meals = new Meals();
             await meals.getAllMealsByArea(areaName);
         })
