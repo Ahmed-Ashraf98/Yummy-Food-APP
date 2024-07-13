@@ -11,12 +11,7 @@
 
   <body>
   
-    <!--* =================== [ Start Loader ] ================= -->
-    <div id="mainLoader" class="position-fixed justify-content-center align-items-center top-50 start-50">
-      <span class="loader"></span>
-    </div>
-    <!--! =================== [ End Loader ] ================= -->
-
+ 
     <!--* =================== [ Start SideBar ] ================= -->
 
     <aside id="sideBar" class="position-fixed d-flex flex-row-reverse">
@@ -99,6 +94,40 @@
 
     <!--! =================== [ End Meal Details View ] ================= -->
 
+
+
+       <!--* =================== [ Search View ] ================= -->
+
+       <section id="searchView">
+        <div class="container">
+          <div class="my-3">
+            <div class="row gy-2">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <input type="text" class="form-control bg-transparent text-white" id="mealName" placeholder="Search By Name" autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <input type="text" class="form-control bg-transparent text-white" id="mealFletter" maxlength="1" placeholder="Search By Frist Letter" autocomplete="off">
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div id="searchResult" class="row gy-2 mt-3">
+          </div>
+        </div>
+      </section>
+  
+      <!--! =================== [ End Search View ] ================= -->
+
+    <!--* =================== [ Start Loader ] ================= -->
+    
+    <div id="mainLoader" class="position-fixed justify-content-center align-items-center top-50 start-50">
+      <span class="loader"></span>
+    </div>
+
+    <!--! =================== [ End Loader ] ================= -->
 
 
     </main>

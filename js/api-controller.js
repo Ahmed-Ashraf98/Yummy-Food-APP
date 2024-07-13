@@ -67,6 +67,18 @@ class APIController{
         return await this.callAPI(endPoint,queryParams,'GET');
     }
 
+    async getAllMealsByName(name){
+        let endPoint = "search.php";
+        let queryParams = `s=${name}`;
+        return await this.callAPI(endPoint,queryParams,'GET');
+    }
+
+    async getAllMealsByFirstLetter(fLetter){
+        let endPoint = "search.php";
+        let queryParams = `f=${fLetter}`;
+        return await this.callAPI(endPoint,queryParams,'GET');
+    }
+
 
 }
 

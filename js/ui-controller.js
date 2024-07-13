@@ -2,6 +2,8 @@
 
 class UIController {
 
+    static numberOfRowData = 20;
+
     showLoader() {
         // fade-in-a-flex-box : requires to set th display as flex then hide the element then fadeIn
         $("#mainLoader").css("display", "flex").hide();
@@ -19,18 +21,6 @@ class UIController {
                 this.toggleSearchPage();
                 this.hideOtherViews(id);
                 break;
-            case "categories":
-                this.toggleCategoriesPage();
-                this.hideOtherViews(id);
-                break;
-            case "area":
-                this.toggleAreaPage();
-                this.hideOtherViews(id);
-                break;
-            case "ingredients":
-                this.toggleIngredientsPage();
-                this.hideOtherViews(id);
-                break;
             case "contactUs":
                 this.toggleContactUsPage();
                 this.hideOtherViews(id);
@@ -43,11 +33,11 @@ class UIController {
     }
 
     showViewById(currentViewId){
-        $(`section#${currentViewId}`).show();
+        $(`section#${currentViewId}View`).show();
     }
 
     hideOtherViews(currentViewId){
-        $(`section:not(#${currentViewId})`).hide();  // hide everything that isn't currentViewId
+        $(`section:not(#${currentViewId}View)`).hide();  // hide everything that isn't currentViewId
     }
 
     toggleMainView(show=true) {
@@ -71,22 +61,11 @@ class UIController {
     toggleSearchPage(show=true) {
         // call main page HTML
         if(show){
+            
             $("#searchView").css("display","block");
         }else{
             $("#searchView").css("display","none");
         }
-    }
-
-    toggleCategoriesPage(show=true) {
-
-    }
-
-    toggleAreaPage(show=true) {
-
-    }
-
-    toggleIngredientsPage(show=true) {
-
     }
 
     toggleContactUsPage(show=true) {
@@ -142,9 +121,9 @@ class UIController {
     }
 
     displayAllIngredients(ingredList){
-        console.log(ingredList)
+
         let ingredHtmlBox= ``;
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < UIController.numberOfRowData; i++) {
             ingredHtmlBox +=  `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="main-card ingredient border border-2 border-white rounded rounded-2 p-2 d-flex flex-column justify-content-center align-items-center text-white" data-id="${ingredList[i].idIngredient}" data-name="${ingredList[i].strIngredient}">
@@ -155,15 +134,20 @@ class UIController {
             </div>
             `;
         }
-        console.log(ingredHtmlBox)
+   
         $("#rowData").html(ingredHtmlBox);
     }
 
-    displayMealsList(mealsList){
+    displayMealsList(mealsList,sectionId="rowData"){
 
         let mealsBox=``;
+        console.log("----------------------------------")
+        console.log(mealsList)
 
-        for (let i = 0; i < mealsList.length; i++) {
+        let size = mealsList.length > 20 ?  UIController.numberOfRowData : mealsList.length;
+
+        for (let i = 0; i < size; i++) {
+          
             mealsBox +=  `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <figure class="main-card meal position-relative rounded rounded-3 overflow-hidden" data-id="${mealsList[i].idMeal}" data-name="${mealsList[i].strMeal}">
@@ -176,7 +160,8 @@ class UIController {
             `;
         }
 
-        $("#rowData").html(mealsBox);
+
+        $(`#${sectionId}`).html(mealsBox);
     }
 
     displayMealDetails(mealObj){
@@ -207,7 +192,7 @@ class UIController {
         let youtubeBtn =``;
 
         if(mealObj.strSource){ // if not null
-            sourceBtn = ` <a  href="${mealObj.strSource}" target="_blank" role="button" class="btn btn-success me-2"> Source </a>`
+            sourceBtn = ` <a href="${mealObj.strSource}" target="_blank" role="button" class="btn btn-success me-2"> Source </a>`
         }else{
             sourceBtn = ` <a class="btn btn-success me-2 disabled" role="button" aria-disabled="true"> Source </a>`
         }

@@ -45,11 +45,9 @@ body{
     background-color: var(--main-bg-color);
 }
 
-/* .h1, h1 {
-    font-size: calc(2.375rem + 1.8vw);
-    white-space:normal;
-} */
-
+input::placeholder {
+   color: #ffffff78 !important;
+}
 
 /* * ====================[ SideBar ]==================== */
 
@@ -171,6 +169,7 @@ body{
     height: 1em;
     border-radius: 50%;
     position: relative;
+    z-index:9999;
     text-indent: -9999em;
     animation: mulShdSpin 1.3s infinite linear;
     transform: translateZ(0);

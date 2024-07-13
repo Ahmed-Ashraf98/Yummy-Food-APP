@@ -20,10 +20,9 @@ class Meals{
             let response = await this.apiController.searchMealByName();
             if (response.ok){
                 let mealsList = await response.json();
+                this.uiController.hideLoader();
                 this.uiController.displayMealsList(mealsList.meals);
                 this.addMealCardsEvents();
-                this.uiController.hideLoader();
-                
             }
             
 
@@ -40,9 +39,9 @@ class Meals{
             if (response.ok){
                 let mealsList = await response.json();
                 console.log(mealsList)
+                this.uiController.hideLoader();
                 this.uiController.displayMealsList(mealsList.meals);
                 this.addMealCardsEvents();
-                this.uiController.hideLoader();
             }
 
         }catch(err){
@@ -58,9 +57,9 @@ class Meals{
             if (response.ok){
                 let mealsList = await response.json();
                 console.log(mealsList)
+                this.uiController.hideLoader();
                 this.uiController.displayMealsList(mealsList.meals);
                 this.addMealCardsEvents();
-                this.uiController.hideLoader();
             }
 
         }catch(err){
@@ -75,9 +74,45 @@ class Meals{
             if (response.ok){
                 let mealsList = await response.json();
                 console.log(mealsList)
+                this.uiController.hideLoader();
                 this.uiController.displayMealsList(mealsList.meals);
                 this.addMealCardsEvents();
+            }
+
+        }catch(err){
+
+        }
+    }
+
+
+    async getAllMealsByName(name){
+        try{
+            this.uiController.showLoader();
+            let response = await this.apiController.getAllMealsByIngredient(name);
+            if (response.ok){
+                let mealsList = await response.json();
+         
                 this.uiController.hideLoader();
+                this.uiController.displayMealsList(mealsList.meals,"searchResult");
+                this.addMealCardsEvents();
+                
+            }
+
+        }catch(err){
+
+        }
+    }
+
+    async getAllMealsByFirstLetter(fLetter){
+        try{
+            this.uiController.showLoader();
+            let response = await this.apiController.getAllMealsByFirstLetter(fLetter);
+            if (response.ok){
+                let mealsList = await response.json();
+   
+                this.uiController.hideLoader();
+                this.uiController.displayMealsList(mealsList.meals,"searchResult");
+                this.addMealCardsEvents();
             }
 
         }catch(err){

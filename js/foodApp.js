@@ -5,6 +5,7 @@ import Areas from "./areas.js";
 import Categories from "./categories.js";
 import Ingredients from "./ingredients.js";
 import Meals from "./meals.js";
+import Search from "./search.js";
 import UIController from "./ui-controller.js";
 
 
@@ -19,7 +20,7 @@ class FoodApp{
     }
 
     async startApp(){
-        this.uiController.hideOtherViews("mainPageView");
+        this.uiController.hideOtherViews("mainPage");
         await this.meals.getDefaultMeals(); 
     }
 
@@ -27,7 +28,9 @@ class FoodApp{
         let obj;
         switch (id) {
             case "search":
-                
+                obj = new Search();
+                this.uiController.displayPageById(id);
+                this.uiController.hideLoader();
                 break;
             case "categories":
                 obj = new Categories();
