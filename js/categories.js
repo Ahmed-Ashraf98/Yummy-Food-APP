@@ -19,15 +19,13 @@ class Categories{
             let response = await this.apiController.getAllCategories();
             if (response.ok){
                 let categoriesList = await response.json();
-
+                this.uiController.hideLoader();
                 this.uiController.displayAllCategories(categoriesList.categories);
                 this.addCategoryCardsEvents();
-                this.uiController.hideLoader();
-
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);   
         }
     }
 

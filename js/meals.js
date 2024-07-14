@@ -24,10 +24,8 @@ class Meals{
                 this.uiController.displayMealsList(mealsList.meals);
                 this.addMealCardsEvents();
             }
-            
-
-        }catch(err){
-
+        }catch(error){
+            console.log(error);  
         }
     }
 
@@ -44,8 +42,8 @@ class Meals{
                 this.addMealCardsEvents();
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);    
         }
     }
 
@@ -62,8 +60,8 @@ class Meals{
                 this.addMealCardsEvents();
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);    
         }
     }
 
@@ -79,8 +77,8 @@ class Meals{
                 this.addMealCardsEvents();
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);    
         }
     }
 
@@ -98,8 +96,8 @@ class Meals{
                 
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);    
         }
     }
 
@@ -115,8 +113,8 @@ class Meals{
                 this.addMealCardsEvents();
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);    
         }
     }
 
@@ -127,9 +125,9 @@ class Meals{
             let elementId = event.currentTarget.getAttribute("data-id");
             // 1- Hide Main View section
             this.uiController.toggleMainView(false)
+            // 2- Show Meal Details Section
             this.uiController.toggleDetailsView();
-            // 2- Show Loading
-            this.uiController.showLoader();
+            // 3- Create an instance for Meal details and pass the id
             new MealDetails(elementId);
         })
     }

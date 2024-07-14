@@ -22,26 +22,22 @@ class MealDetails{
             let response = await this.apiController.getMealDetailsById(id);
             if (response.ok){
                 let mealsList = await response.json();
-                console.log(mealsList) 
-                this.uiController.displayMealDetails(mealsList.meals[0]);
                 this.uiController.hideLoader();
-
+                this.uiController.displayMealDetails(mealsList.meals[0]);
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);   
         }
     }
 
     addCloseBtnEvent(){
         // This function to add close event when user click on X icon to close the game details
         $("#detailsCloseBtn").on("click",()=>{
-        //TODO:  Know the pervious page ?
-        console.log("Ok")
         this.uiController.toggleDetailsView(false);
         this.uiController.toggleMainView();
    })
-    }
+}
 
 }
 

@@ -18,13 +18,12 @@ class Areas{
             let response = await this.apiController.getAllAreas();
             if (response.ok){
                 let areasList = await response.json();
+                this.uiController.hideLoader();
                 this.uiController.displayAllAreas(areasList.meals);
                 this.addAreaCardsEvents();
-                this.uiController.hideLoader();
             }
-
-        }catch(err){
-
+        }catch(error){
+            console.log(error);   
         }
     }
 

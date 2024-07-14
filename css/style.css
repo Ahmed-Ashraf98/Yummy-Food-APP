@@ -33,7 +33,6 @@
     --bg-white-text-color:#000;
 }
 
-
 /* * ====================[ General Settings ]==================== */
 
 *{
@@ -47,6 +46,10 @@ body{
 
 input::placeholder {
    color: #ffffff78 !important;
+}
+
+#contactUsView input::placeholder{
+    color: #0101018a !important;
 }
 
 /* * ====================[ SideBar ]==================== */
@@ -97,7 +100,7 @@ input::placeholder {
 }
 
 
-/** =======================Main Page====================== */
+/** ======================= Main Cards ====================== */
 
 .main-card{
     cursor: pointer;
@@ -118,7 +121,7 @@ input::placeholder {
     top: 0%;
 }
 
-/** ========================================  */
+/** =================== [ Meal Details ] ====================  */
 
 #mealDetailsView{
     color: var(--bg-dark-text-color);
@@ -160,7 +163,16 @@ input::placeholder {
     border-radius: var(--bs-badge-border-radius);
 }
 
-/* *=========================== Loader =========================== */
+
+/* ?=========================== Loader =========================== */
+
+#mainLoader{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--main-bg-color);
+    width: 100%;
+}
 
 .loader {
     color: #fff;

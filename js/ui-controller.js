@@ -27,52 +27,57 @@ class UIController {
                 break;
             default:
                 this.toggleMainView();
-                this.hideOtherViews(id);
+                this.hideOtherViews("mainPage");
                 break;
         }
     }
 
-    showViewById(currentViewId){
-        $(`section#${currentViewId}View`).show();
-    }
 
     hideOtherViews(currentViewId){
-        $(`section:not(#${currentViewId}View)`).hide();  // hide everything that isn't currentViewId
+        $(`section:not(#${currentViewId}View)`).removeClass(["d-flex","d-block"]).addClass("d-none");  // hide everything that isn't currentViewId
     }
 
     toggleMainView(show=true) {
         // call main page HTML
         if(show){
-            $("#mainPageView").css("display","block");
+            $("#mainPageView").removeClass("d-none");
+            $("#mainPageView").addClass("d-block");
         }else{
-            $("#mainPageView").css("display","none");
+            $("#mainPageView").removeClass("d-block");
+            $("#mainPageView").addClass("d-none");
         }
     }
 
     toggleDetailsView(show=true) {
         // call main page HTML
         if(show){
-            $("#mealDetailsView").css("display","block");
+            $("#mealDetailsView").removeClass("d-none");
+            $("#mealDetailsView").addClass("d-block");
+       
         }else{
-            $("#mealDetailsView").css("display","none");
+            $("#mealDetailsView").removeClass("d-block");
+            $("#mealDetailsView").addClass("d-none");
         }
     }
 
     toggleSearchPage(show=true) {
         // call main page HTML
         if(show){
-            
-            $("#searchView").css("display","block");
+            $("#searchView").removeClass("d-none");
+            $("#searchView").addClass("d-block");
         }else{
-            $("#searchView").css("display","none");
+            $("#searchView").removeClass("d-block");
+            $("#searchView").addClass("d-none");
         }
     }
 
     toggleContactUsPage(show=true) {
         if(show){
-            $("#contactUsView").css("display","block");
+            $("#contactUsView").removeClass("d-none");
+            $("#contactUsView").addClass("d-flex");
         }else{
-            $("#contactUsView").css("display","none");
+            $("#contactUsView").removeClass("d-flex");
+            $("#contactUsView").addClass("d-none");
         }
     }
 
@@ -83,7 +88,9 @@ class UIController {
         
         let htmlBox=``;
 
-        for (let i = 0; i < categoriesList.length; i++) {
+        let size = categoriesList.length > 20 ?  UIController.numberOfRowData : categoriesList.length;
+
+        for (let i = 0; i < size; i++) {
             htmlBox +=  `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <figure class="main-card category position-relative rounded rounded-3 overflow-hidden" data-id="${categoriesList[i].idCategory}" data-name="${categoriesList[i].strCategory}" >
@@ -104,7 +111,11 @@ class UIController {
     displayAllAreas(areasList){
        
         let areasHtmlBox= ``;
-        for (let i = 0; i < areasList.length; i++) {
+
+        let size = areasList.length > 20 ?  UIController.numberOfRowData : areasList.length;
+
+
+        for (let i = 0; i < size; i++) {
             areasHtmlBox +=  `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="main-card area border border-2 border-white rounded rounded-2 d-flex flex-column justify-content-center align-items-center text-white" data-name="${areasList[i].strArea}">
@@ -123,7 +134,11 @@ class UIController {
     displayAllIngredients(ingredList){
 
         let ingredHtmlBox= ``;
-        for (let i = 0; i < UIController.numberOfRowData; i++) {
+
+        let size = ingredList.length > 20 ?  UIController.numberOfRowData : ingredList.length;
+
+
+        for (let i = 0; i < size; i++) {
             ingredHtmlBox +=  `
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="main-card ingredient border border-2 border-white rounded rounded-2 p-2 d-flex flex-column justify-content-center align-items-center text-white" data-id="${ingredList[i].idIngredient}" data-name="${ingredList[i].strIngredient}">
@@ -171,7 +186,9 @@ class UIController {
 
         for (const key in mealObj) {
             if(key.startsWith("strIngredient")){
-                recipesList.push(mealObj[key])
+                if(mealObj[key]){ // if value not null
+                    recipesList.push(mealObj[key])
+                } 
             }
         }
 

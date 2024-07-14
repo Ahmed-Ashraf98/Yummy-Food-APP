@@ -3,6 +3,7 @@
 import APIController from "./api-controller.js";
 import Areas from "./areas.js";
 import Categories from "./categories.js";
+import ContactUs from "./contact-us.js";
 import Ingredients from "./ingredients.js";
 import Meals from "./meals.js";
 import Search from "./search.js";
@@ -28,24 +29,29 @@ class FoodApp{
         let obj;
         switch (id) {
             case "search":
-                obj = new Search();
+                new Search();
                 this.uiController.displayPageById(id);
                 this.uiController.hideLoader();
                 break;
             case "categories":
                 obj = new Categories();
+                this.uiController.displayPageById(id)
                 await obj.getAllCategories();
                 break;
             case "area":
                 obj = new Areas();
+                this.uiController.displayPageById(id)
                 await obj.getAllAreas();
                 break;
             case "ingredients":
                 obj = new Ingredients();
+                this.uiController.displayPageById(id)
                 await obj.getAllIngredients();
                 break;
             case "contactUs":
-                
+                new ContactUs();
+                this.uiController.displayPageById(id);
+                this.uiController.hideLoader();
                 break;
         }
     }

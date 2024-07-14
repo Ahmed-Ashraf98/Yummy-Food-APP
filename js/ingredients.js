@@ -18,13 +18,13 @@ class Ingredients{
             let response = await this.apiController.getAllIngredients();
             if (response.ok){
                 let ingredientsList = await response.json();
+                this.uiController.hideLoader();
                 this.uiController.displayAllIngredients(ingredientsList.meals);
                 this.addIngredientsCardsEvents();
-                this.uiController.hideLoader();
             }
 
-        }catch(err){
-
+        }catch(error){
+            console.log(error);   
         }
     }
 
